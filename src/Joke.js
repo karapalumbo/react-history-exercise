@@ -2,10 +2,13 @@ import React from "react";
 import "./Joke.css";
 
 class Joke extends React.Component {
-  state = {
-    vote:0
+  constructor(props) {
+    super(props);
+    this.state = { vote: 0 }
+    this.upVote = this.upVote.bind(this)
+    this.downVote = this.downVote.bind(this)
   }
-
+  
   upVote = () => {
     this.setState({ vote: this.state.vote + 1 })
   }
@@ -17,7 +20,6 @@ class Joke extends React.Component {
   render() {
     const { vote } = this.state;
     const { text } = this.props;
-    const { id } = this.props;
     return (
       <div className="Joke">
        <div className="Joke-votearea">
